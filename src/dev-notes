@@ -147,9 +147,103 @@
         - create the icons as props in the FormControlLabel
                 icon={<DeleteIcon />}
                 checkedIcon={<SaveIcon />}
+17. Now let's add some txtfields
+        - import textfeild from material ui
+                import TextField from '@material-ui/core/TextField';
+        - place the text TextField above our checkbox
+                <TextField / >
+            <CheckboxExample / >
+        See it in the browser, the text is black and we are using a dark bakground 
+        - Open App.css > add a style to this and override anything placed from the default library by adding "important"
+                input {
+                        color: white !important;
+                }
+        See now that the text entered is white
          
+18. We can also add other props to our <TextField>
+        <TextField
+        variant="outline"  // others: outline, standard
+        color="secondary"
+        type="date" // can also use "time", "email"....
+        label="Date Is"
+        value="test@test.com" // for set value like email
+        placeholder="test@test.com" // we can use "placeholder" instead
+         />
+19. We can add our own custom style as usual
+        - import makeStyle from materialui
+                import {makeStyle} from '@material-ui/core/styles';
+        - create a const useStyle above the CheckboxExample func which we can ref later
+        const useStyle = makeStyles({
+                root: {
+                        background: 'linear-gradient(45deg, #333, #999)',
+                        border: 0,
+                        borderRadius: 15,
+                        color: 'white',
+                        padding: '0 30px'
+                }
+        })
 
+        - Create a func below useStyle() to use the style
+                function ButtonStyled() {
+                        const classes = useStyle(); // call the useStyle here
+                        return <Button className={classes.root}>Test Styled Button</Button>
+                }
+        - now create the class ButtonStyled in func App just above the TextField
+                <ButtonStyled />
+        Now refresh and see our ButtonStyled in the browser
+        - we can add more style to that as needed:
+                root: {
+                        background: 'linear-gradient(45deg, #fe6bbb, #ff8e53)',
+                        border: 0,
+                        marginBottom: 15,
+                        borderRadius: 15,
+                        color: 'white',
+                        padding: '30px 30px'
+                }
+
+20. We can also redesign the themes with theme provider which will actually work as a parent
+        - add themeProvider to the style import statement
+                import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+        - wrap the ThemeProvider around all the content of the function App return() so that it is available to all to use
+                <ThemeProvider>
+                        <div className="App">
+                        //--other contentents----
+                        </div>
+                <ThemeProvider>
+        - themeProvider requires a theme which we can customize, add the theme as
+                <ThemeProvider theme={theme}>
+        - we have to define this theme using another theme, add createMuiTheme to the style import
+                import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
  
+        - claa the createMuiTheme in a const class just below the const useStyles
+                const theme = createMuiTheme({
+                        palette: {  // def a palette for our primary color
+                                primary:  {
+                                        main: orange[500], // def a main color orange with 500 weight
+                                }
+                        }
+                })
+        - Now import "orange" from material ui
+                import { orange } from '@material-ui/core/colors';
+
+        We can use any color we like in the import and change the palette to that color and it will work:
+                import { green } from '@material-ui/core/colors';
+                
+                main: green[500],  // in palette will work too
+        - we can also def a secondary color and add it to the palette
+                import { green, orange } from '@material-ui/core/colors';
+                
+                 palette: {  // def a palette for our primary color
+                                primary:  {
+                                        main: green[500], 
+                                },
+                                secondary:  {
+                                        main: orange[400], // def a main color orange with 400 weight
+                                }
+                                
+                        }
+We can also do some nesting here. Read more in the documentation
+
 
 
 
