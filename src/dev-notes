@@ -1,0 +1,157 @@
+1. npx create-react-app material-ui-react
+
+2. open the app in vs code
+3. open terminal > 
+    npm install @material-ui/core
+    see https://material-ui.com/
+    see it added to package.json
+4. npm start (to start/testrun the app)
+5. open App.js
+    we don't need the link, and p, so delete 
+    that leaves judt the react logo
+6. import the button from @material-ui/core
+        import Button from "@material-ui/core/Button";
+    - add it to the classname Header, just above <img>
+        <Button>Hello World</Button>
+    see it showing in the ui
+    https://material-ui.com/components/buttons/#contained-buttons
+
+    - add to button <Button variant="contained">Hello World</Button>
+    See the changes in the btn in the browser
+    - add color to the btn
+        <Button variant="contained" color="primary">Hello World</Button>  // can also be secondary
+    - we can make the btn a linkable by adding href="#" or whatever to the btn
+    - Or add a click listener to the button by adding onClick={() => alert('Hello World!")}
+    - we can change the size of the btn to small by adding
+            size="small" or "large"
+    - we can also add disable to the btn which disables and make the btn unclickable
+            disabled
+    - To add our own custom style we can do something like
+            style={{
+                fontSize: 400; or whatever
+            }}
+    - to add icons on the btns, install as ff
+            npm install @material-ui/icons
+7. add the icons to the btn
+        startIcon={<SaveIcon />} // this adds an icon to the left of the btn
+        endIcon = { < SaveIcon / > } // this adds an icon to the right of the btn
+8. then import SaveIcon passing in @material-ui/icon/Save
+        import SaveIcon from @material-ui/icon/Save
+
+9. To create a btn group, we 1st have to import the btn group
+       - import ButtonGroup from @material-ui/core/ButtonGroup
+       - wrap our btns inside the btn group
+        <ButtonGroup>
+                <Button>
+                        ......
+                        color="primary"
+                        Save
+                </Button>
+                <Button>
+                        ......
+                        color="secondary"
+                        Discard
+                </Button>
+        </ButtonGroup>
+
+10. Import a DeleteIcon 
+        - import DeleteIcon from @material-ui/icon/Save
+
+     change the second btn icon to use the delete icon
+        - startIcon = { < DeleteIcon / > }  // for icon on left of btn OR
+        - endIcon = { < DeleteIcon / > }    // for icon on right of btn 
+
+11. Since we are using a btn group, we can move some of the styles there for uniformity/ less codes
+        <ButtonGroup 
+        variant = "contained"
+        color = "primary"
+        size = "large" >
+                <Button 
+                startIcon = { < SaveIcon / > } >
+                Save 
+                </Button> 
+
+                <Button 
+                endIcon = { < DeleteIcon / > } >
+                Discard 
+                </Button> 
+        </ButtonGroup>
+
+12. Now let's add check box
+        1st import checkbox from material ui
+                import { Checkbox } from '@material-ui/core/Checkbox';
+        2nd create a func for checkbox above App func
+                function CheckboxExample() {
+                        return ( 
+                                <div >
+                                        Test 
+                                </div>
+                        )
+                }
+13. Add the CheckboxExample func above the ButtonGroup in the App() func
+        function App() { 
+                return (
+                        //-------------
+                        <CheckboxExample / >
+                        <ButtonGroup ......>
+                        //----------
+                )
+        }
+        Refresh and see Test displayed above the btns
+
+14. Update the CheckboxExample func. by adding a <checkbox> to the func return statement
+ and declare a state above the return statement
+        function CheckboxExample() {
+                const [checked, setChecked] = React.useState(true)
+                return ( 
+                        <Checkbox
+                        checked={checked}
+                        onChange={(e) => setChecked(e.target.checked)}
+
+                        // we can add other props like
+                        color = "primary" or
+                        disabled   // this disables the checkbox
+
+                        // there are wrappings in checkbox so it is advisable to add additional props in "inputProps" like
+
+                        inputProps={{
+                            'aria-label': 'secondary checkbox'    
+                        }}
+                        />   
+                )
+        }
+15. To add label to our checkboxes, 
+  import a FormControlLabel from material ui
+        import FormControlLabel from '@material-ui/core/FormControlLabel';
+  Then wrap a <FormControlLabel> around the <checkbox>
+  We will not wrap it as a child
+        <FormControlLabel></FormControlLabel>
+  But as a props
+        <FormControlLabel
+               control= {<Checkbox
+                        checked={checked}
+                        onChange={(e) => setChecked(e.target.checked)}
+
+                        color = "primary" or
+                        disabled   // this disables the checkbox
+
+                        inputProps={{
+                            'aria-label': 'secondary checkbox'    
+                        }}
+                        />
+               }  
+               label="Testing CheckboxExample"
+        />
+        
+16. We can use the checkbox for save and delete by
+        - create the icons as props in the FormControlLabel
+                icon={<DeleteIcon />}
+                checkedIcon={<SaveIcon />}
+         
+
+ 
+
+
+
+source: https://material-ui.com/components/buttons/#contained-buttons
+         https://material-ui.com/components/icons/#installation
