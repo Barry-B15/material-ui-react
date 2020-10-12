@@ -10,6 +10,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { green, orange } from '@material-ui/core/colors';
+import 'fontsource-roboto';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
     root: {
@@ -22,16 +24,22 @@ const useStyles = makeStyles({
     }
 })
 
- const theme = createMuiTheme({
-     palette: {  
-            primary:  {
-                    main: green[500], 
-                },
-            secondary:  {
-                     main: orange[400], 
-                }
-            }
-    })
+const theme = createMuiTheme({
+    typography: {
+        h2: {
+            fontSize: 36,
+            marginBottom: 15
+        }
+    },
+    palette: {
+        primary: {
+            main: green[500],
+        },
+        secondary: {
+            main: orange[400],
+        }
+    }
+})
 
 function ButtonStyled() {
     const classes = useStyles(); // call the useStyle here
@@ -58,11 +66,21 @@ function CheckboxExample() {
     }
 
     function App() {
-        return ( 
-            <ThemeProvider theme={theme}>
-            <div className = "App" >
+        return ( <
+            ThemeProvider theme = { theme } >
+            <
+            div className = "App" >
             <
             header className = "App-header" >
+            <
+            Typography variant = "h2"
+            component = "div" >
+            Welcome to Material UI <
+            /Typography>  <
+            Typography variant = "subtitle1" >
+            Learn how to use Material UI <
+            /Typography> 
+
             <
             ButtonStyled / >
             <
@@ -95,9 +113,10 @@ function CheckboxExample() {
             alt = "logo" / >
 
 
-            </header> 
-            </div >
-            </ThemeProvider>
+            <
+            /header>  < /
+            div > <
+            /ThemeProvider>
         );
     }
 

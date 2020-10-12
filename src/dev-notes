@@ -244,6 +244,38 @@
                         }
 We can also do some nesting here. Read more in the documentation
 
+21. Topography: Font Sizes
+        - To use the default roboto font size, we need to first install it
+                npm install add fontsource-roboto
+        - Then import it 
+                import 'fontsource-roboto';
+        
+        - import typography from material ui
+                import Typography from '@material-ui/core/Typography';
+        - Now let's put it at the head of our app in App.js func App() above the ButtonStyled
+                <Typography>
+                        Welcome to Material UI
+                </Typography>
+        - We can now add a variant to our Typography
+                <Typography variant="h2">
+                        Welcome to Material UI
+                </Typography>
+        -  We can create another with a variant of h3 and text
+                <Typography variant = "h3" >
+                        Lear how to use Material UI 
+                </Typography> 
+                other variants can be h3,----, subtitle1,----, body1...... etc
+        - In DevTools we see that our typography is an h6, we can turn it into a div by adding "component" = "div" as ff:
+                <Typography variant = "h3" component="div">
+        - If we want to, we can also customize the theme of our typography
+                > jump to our const them > create some custom sizings
+                > add typography as an obj
+                typography {
+                        h2: {
+                                fontSize: 18, // adjust the size to fit
+                        }
+                }
+
 
 
 
