@@ -12,6 +12,13 @@ import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/sty
 import { green, orange } from '@material-ui/core/colors';
 import 'fontsource-roboto';
 import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/core/Menu';
 
 const useStyles = makeStyles({
     root: {
@@ -31,14 +38,14 @@ const theme = createMuiTheme({
             marginBottom: 15
         }
     },
-    palette: {
-        primary: {
-            main: green[500],
-        },
-        secondary: {
-            main: orange[400],
-        }
-    }
+    // palette: {
+    //     primary: {
+    //         main: green[500],
+    //     },
+    //     secondary: {
+    //         main: orange[400],
+    //     }
+    // }
 })
 
 function ButtonStyled() {
@@ -68,22 +75,74 @@ function CheckboxExample() {
     function App() {
         return ( <
             ThemeProvider theme = { theme } >
+
+            <
+            Container maxWidth = "xs" >
             <
             div className = "App" >
             <
             header className = "App-header" >
             <
+            AppBar color = "secondary" >
+            <
+            Toolbar >
+            <
+            IconButton >
+            <
+            MenuIcon / >
+            <
+            /IconButton>   <
+            Typography variant = "h6" >
+            MUI Theming <
+            /Typography>  <
+            Button >
+            Login <
+            /Button> < /
+            Toolbar > < /
+            AppBar >
+            <
             Typography variant = "h2"
             component = "div" >
-            Welcome to Material UI <
-            /Typography>  <
+            Welcome to Material UI < /Typography>   <
             Typography variant = "subtitle1" >
-            Learn how to use Material UI <
-            /Typography> 
+            Learn how to use Material UI < /Typography> 
 
             <
             ButtonStyled / >
+
             <
+            Grid container spacing = { 2 }
+            justify = "center" >
+            <
+            Grid item xs = { 3 } >
+            <
+            Paper style = {
+                { height: 75, width: '100%', }
+            }
+            />     < /
+            Grid > <
+            Grid item xs = { 3 } >
+            <
+            Paper style = {
+                { height: 75, width: '100%', }
+            }
+            />    < /
+            Grid > <
+            Grid item xs = { 3 } >
+            <
+            Paper style = {
+                { height: 75, width: '100%', }
+            }
+            />    < /
+            Grid > <
+            Grid item xs = { 3 } >
+            <
+            Paper style = {
+                { height: 75, width: '100%', }
+            }
+            />    < /
+            Grid > <
+            /Grid>   <
             TextField variant = "filled"
             color = "secondary"
             type = "email"
@@ -112,11 +171,11 @@ function CheckboxExample() {
             className = "App-logo"
             alt = "logo" / >
 
-
             <
-            /header>  < /
+            /header>    < /
             div > <
-            /ThemeProvider>
+            /Container>   < /
+            ThemeProvider >
         );
     }
 

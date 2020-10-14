@@ -273,9 +273,134 @@ We can also do some nesting here. Read more in the documentation
                 typography {
                         h2: {
                                 fontSize: 18, // adjust the size to fit
+                                marginBottom: 16, //we can add other things like margin, padding, etc
                         }
                 }
+22. Creating containers, grids and general layouts
+        - import container from material ui
+                import Container from '@material-ui/core/Container';
 
+        - Then place it inside our function App() using it to wrap other contentents
+                <Container>
+                        <div className="App">
+                                //other contents
+                        </div>
+                </Container>
+        This adds a little bit of padding to the sides, we can add ours
+
+        - let's add a maxWidth to our container
+                <Container maxWidth="sm"> // sm means small, md - medium, lg  -  large, xs - mobile size
+23. we can do many other things with material ui.
+    Let's create a grid
+    - import paper and grid from materialui so we can create some paper components inside our grid
+        import Paper from '@material-ui/core/Paper';
+        import Grid from '@material-ui/core/Grid';
+
+    - add the Grid to the func App() just below the <ButtonStyled> like so
+        we can also remobe the TextField
+                <Grid>
+                        <Paper /> // add a paper component
+                </Grid>
+        A Grid can be either a "Container" or an "item". Lets make this an a Grid "item" inside a Grid Container
+                <Grid container>
+                        <Grid item>
+                                <Paper style={{ height:75, width:50, }} /> // add a paper component
+                        </Grid>
+                </Grid>
+        Create multiple to see how it works
+        - we can now add spacing and other styling to our Grid Container like so
+                <Grid container spacing={2} justify="center">
+24. Make it responsive. For this we shall apply our responsive design directly inside our grid components
+        if we want our grid item xs to span 12 rows we just do 
+        <Grid item xs={12}>
+                <Paper style={{ height:75, width:100%, }} /> //if we waant it to take the whole width
+        </Grid>
+
+        if we want xs to span 3 and sm to span 6 spaces
+        <Container maxWidth = "xs" >
+                <div className = "App">
+                <header className = "App-header" >
+                <Typography variant = "h2" component = "div">
+                        Welcome to Material UI 
+                </Typography>   
+                <Typography variant = "subtitle1" >
+                        Learn how to use Material UI < /Typography> 
+                <ButtonStyled />
+                <Grid container spacing = { 2 } justify = "center" >
+                        <Grid item xs={3} sm={6}> // if we want to span 3 spacing (12 is the highest), medium sm to span 6 spacing
+                                < Paper style = {{ height: 75, width: 100%, }} />   // if we want it to take the whole available width
+                        </Grid >
+                        <Grid item xs={3} sm={6}>
+                                <Paper style = {{ height: 75, width: '100%', }} />   
+                        </Grid >
+                        <Grid item xs={3} sm={6}>
+                                <Paper style = {{ height: 75, width: '100%', }} />   
+                        </Grid >
+                        <Grid item xs={3} lg={12}>
+                                <Paper style = {{ height: 75, width: '100%', }}/>   
+                        </Grid >
+
+                        // more codes
+                </Grid>  
+                </div>
+        </container>
+25. if we want the layout to dynamically respond depending on the viewport we are on, 
+        we can just pass it like xs and it will utilize as much space as it can on the viewport
+
+        <Grid container spacing = { 2 } justify = "center" >
+                        <Grid item xs> // if we want to span 3 spacing (12 is the highest), medium sm to span 6 spacing
+                                < Paper style = {{ height: 75, width: 100%, }} />   
+                        </Grid >
+                        <Grid item xs>
+                                <Paper style = {{ height: 75, width: '100%', }} />   
+                        </Grid >
+                        <Grid item xs>
+                                <Paper style = {{ height: 75, width: '100%', }} />   
+                        </Grid >
+                        <Grid item xs>
+                                <Paper style = {{ height: 75, width: '100%', }}/>   
+                        </Grid >
+
+                        // more codes
+        </Grid>  
+We are going to leave it at 3 units to have some space around
+        x={3}         
+ 26. There are many premade components that we can use in material ui,
+        let's use one of them - the app bar at the top of our site.
+        - import appBar from material ui
+                import AppBar from '@material-ui/core/AppBar';
+        - That will need a few other things like a toolbar, icon btn and menu icon so import those too
+                import Toolbar from '@material-ui/core/Toolbar';
+                import IconButton from '@material-ui/core/IconButton';
+                import MenuIcon from '@material-ui/core/Menu';
+        - Now lets add these to the top of our App func
+                <header className="App-header">
+                        <AppBar>
+                                <Toolbar>
+                                        <IconButton>
+                                                <MenuIcon />
+                                        </IconButton>
+                                </Toolbar>
+                        </AppBar>
+
+                // Let's also add a Typography and a Button
+                <Typography variant="H6">
+                        MUI Theming
+                </Typography>
+                <Button> Login</Button>
+                        //----------------
+                </header>
+        - We can customize our styling to AppBar as any other things
+                <AppBar color="secondary">
+
+27. Finally we can remove the "palette" we defined in our theme and use the default (optional)
+28. And Add some padding to out App to get a better layout
+        > App.css 
+        > .App {
+                text-aligned: 'center';
+                margin-top: 55px;
+        }
+        There are a lot of designs we can use with React and Material UI
 
 
 
